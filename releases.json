@@ -1,6 +1,27 @@
 {
   "releases": [
     {
+      "tag": "nmm-build-1.0.0-100",
+      "version": "1.0.0+100",
+      "date": "2026-09-14",
+      "ko": [
+        "설정에 \"블루투스 연결시에도 핸드폰으로 소리 출력\" 항목이 추가됐습니다 — 차량과 블루투스로 연결된 상태에서도 경고 음성을 휴대폰 스피커로 들을 수 있습니다. 다른 앱이 이미 블루투스로 소리를 내고 있을 때는 그 경고음만 블루투스로 나가 다른 앱 재생을 방해하지 않습니다.",
+        "이 기능을 처음 쓸 때 마이크 권한을 요청하는 안내가 한 번 뜹니다 — 실제로 마이크를 사용하진 않으며, iOS 제약 때문에 필요한 절차입니다.",
+        "긴 경고 문구가 끝까지 나오지 않고 중간에 끊기던 문제, 앱을 처음 실행할 때 나던 짧은 클릭음, 설정한 음량이 반영되지 않던 문제를 고쳤습니다.",
+        "음성 안내를 사용할 수 없을 때 뜨는 주의 창이 이제 자동으로 사라지지 않고, 확인을 눌러야 닫힙니다.",
+        "안내/주의/경고 알림 창 디자인을 더 보기 좋게 다듬었습니다.",
+        "전방 카메라 경고 표시가 속도 숫자를 가릴 때 부드럽게 전환되도록 개선했습니다."
+      ],
+      "en": [
+        "Added a new setting, \"Always play through phone speaker\" — warning voice now plays from the phone speaker even while connected to a car by Bluetooth. If another app is already playing audio over Bluetooth, that warning plays over Bluetooth instead so it doesn't interrupt.",
+        "The first time this is needed, a one-time prompt asks for microphone access — BlueArgos never actually uses the microphone; this is required only because of an iOS limitation.",
+        "Fixed longer warning sentences sometimes getting cut off before they finished, a short click sound on first launch, and the volume setting not being applied correctly.",
+        "The \"Voice guidance isn't playing\" alert no longer disappears on its own — tap OK to dismiss it.",
+        "Refined the look of the info/caution/warning alert cards.",
+        "Improved the transition when a camera warning marker covers the speed number on screen."
+      ]
+    },
+    {
       "tag": "nmm-build-1.0.0-94",
       "version": "1.0.0+94",
       "date": "2026-09-12",
