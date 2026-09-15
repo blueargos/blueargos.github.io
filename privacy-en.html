@@ -171,7 +171,7 @@
 
   <div class="legal-head">
     <h1>Privacy Policy</h1>
-    <p class="legal-meta">Effective 12 September 2026 · First version</p>
+    <p class="legal-meta">Effective 12 September 2026 · First version (revised 15 September 2026: updated the microphone permission entry to match actual behavior)</p>
   </div>
 
   <div class="legal-summary">
@@ -311,7 +311,7 @@
           <tr><td>Motion &amp; Fitness (iOS)</td><td>Barometer readings, used to tell overpasses and underpasses apart</td></tr>
           <tr><td>Notifications</td><td>Shows that a drive is in progress</td></tr>
           <tr><td>Network</td><td>Downloading camera data; sending the records described in section 2</td></tr>
-          <tr><td>Microphone</td><td><strong>Not used in released builds.</strong> It serves voice memos for bug reports in the developer's own debug builds only; that path is unreachable in the app you install</td></tr>
+          <tr><td>Microphone</td><td>On iOS, requesting microphone permission is unavoidable due to an Apple platform constraint, in order to support "always play warnings through the phone speaker, even while connected to a car over Bluetooth" — <strong>this permission is never used to record or store audio.</strong> Android does not need this permission at all. (Voice-memo bug reports use the microphone only in the developer's own debug builds; that path is unreachable in the app you install)</td></tr>
         </tbody>
       </table>
     </div>
