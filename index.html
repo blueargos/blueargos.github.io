@@ -69,7 +69,7 @@
   <section class="hero">
     <div class="hero-inner">
       <p class="eyebrow" data-i18n="hero.eyebrow">경로 설정 없음 · 개인정보 필요 없음 · 시간 기반 사전 알림 · 통신·배터리 사용 최소화 · 광고 없음</p>
-      <h1 data-i18n="hero.h1">깨끗하고 편리한<br class="br-mobile" /> 과속 카메라 알림</h1>
+      <h1 data-i18n="hero.h1">깨끗하고 편리한<br class="br-mobile" /> 과속카메라 알림</h1>
       <p class="hero-lead" data-i18n="hero.lead">
         BlueArgos는 불안하게 개인 정보나 차량 정보를 요구하지 않습니다.
         경로 설정도 필요 없습니다. 설치 후 실행만 하면 됩니다.
@@ -90,12 +90,16 @@
           <div class="ring-stage ring-stage-hero" data-ring-stage>
             <div class="ring-glow-wrap"><div class="ring-glow" data-ring-glow></div></div>
             <div class="blue-ring" data-ring></div>
+            <div class="candidate-marker" data-candidate-11></div>
+            <div class="candidate-marker" data-candidate-2></div>
             <div class="camera-sign" data-camera-sign>
               <span data-camera-sign-text>100</span>
             </div>
             <div class="speed-value" data-speed-value>5</div>
           </div>
-          <p class="phone-caption" data-phone-caption>저속 주행</p>
+          <div class="phone-caption-zone">
+            <p class="phone-caption" data-phone-caption>저속 주행 시 화면</p>
+          </div>
         </div>
       </div>
     </div>
@@ -178,16 +182,26 @@
           </div>
         </div>
       </li>
+      <!-- 2026-09-16 피드백으로 기존 3번(과속 경고)을 2번으로 올렸다 —
+           내용(data-i18n 키)은 step2.*/step3.* 그대로 두고, 화면에 보이는
+           순서와 번호(.step-num)만 맞바꿨다. -->
       <li>
         <span class="step-num">2</span>
         <div class="step-body">
           <div class="step-text">
-            <h3 data-i18n="step2.h3">사전 경고</h3>
-            <p data-i18n="step2.p">현재 속도를 기준으로 과속 카메라까지 남은 시간을 계산해서 사용자가 설정한 시간 전에 알려줍니다. 저속이든 고속이든 미리 알려주는 시간이 동일합니다.</p>
+            <h3 data-i18n="step3.h3">실시간 대상 카메라 선별</h3>
+            <p data-i18n="step3.p">경로 설정 없이도 BlueArgos만의 특허 기술로 전방의 많은 카메라들 중 경고 대상 카메라를 실시간으로 판단합니다.</p>
           </div>
+          <!-- 히어로 애니메이션의 "전방 다수 카메라 중 대상 선별" 장면(select
+               단계, 11시/2시 후보 마커)을 축약해 재현한다 — mini-sign(대상)
+               둘레에 작은 후보 마커 2개가 번갈아 나타났다 사라진다. -->
           <div class="step-visual" aria-hidden="true">
-            <div class="mini-sign mini-sign--approach">60</div>
-            <p class="step-caption" data-i18n="step2.caption">20초 뒤 60km 단속 카메라가 있습니다.</p>
+            <div class="mini-radar">
+              <span class="mini-candidate mini-candidate--a"></span>
+              <span class="mini-candidate mini-candidate--b"></span>
+              <div class="mini-sign mini-sign--flash">60</div>
+            </div>
+            <p class="step-caption" data-i18n="step3.caption">속도를 60km로 줄이세요</p>
           </div>
         </div>
       </li>
@@ -195,12 +209,12 @@
         <span class="step-num">3</span>
         <div class="step-body">
           <div class="step-text">
-            <h3 data-i18n="step3.h3">과속 경고</h3>
-            <p data-i18n="step3.p">BlueArgos만의 기술로 경로 입력 없이도 전방의 많은 카메라 중 어떤 카메라에 대해 경고해줄지를 실시간으로 판단합니다. (특허 출원 중)</p>
+            <h3 data-i18n="step2.h3">감속 필요 시, 시간 기반 사전 경고</h3>
+            <p data-i18n="step2.p">정속 주행 시에는 불필요한 알림음이 없습니다. 전방에 카메라가 있고 과속하여 감속이 필요할 경우에만 화면과 음성으로 알려줍니다. 그리고 항상 동일하게 15초 전에 알려줍니다. (설정 변경 가능) 어떤 도로든 어떤 속도든 동일한 시간 전에 알려주기 때문에 편리합니다.</p>
           </div>
           <div class="step-visual" aria-hidden="true">
-            <div class="mini-sign mini-sign--flash">60</div>
-            <p class="step-caption" data-i18n="step3.caption">속도를 60km로 줄이세요</p>
+            <div class="mini-sign mini-sign--approach">60</div>
+            <p class="step-caption" data-i18n="step2.caption">15초 뒤 60km 단속 카메라가 있습니다.</p>
           </div>
         </div>
       </li>
@@ -213,7 +227,7 @@
           </div>
           <div class="step-visual" aria-hidden="true">
             <div class="mini-sign mini-sign--overspeed">+20</div>
-            <p class="step-caption" data-i18n="step4.caption">20km/h 과속 했습니다.</p>
+            <p class="step-caption" data-i18n="step4.caption">20km/h 과속했습니다.</p>
           </div>
         </div>
       </li>

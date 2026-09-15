@@ -292,17 +292,51 @@ a { color: inherit; }
   pointer-events: none;
 }
 
+/* 2026-09-17 재요청 — 캡션을 "블루 링 바로 아래"가 아니라 "블루 링
+   바닥 ~ 폰 하단 사이의 정중앙"에 위치시킨다. 고정 gap 대신, ring-stage
+   앞뒤에 늘어나는 빈 flex 아이템 두 개(::before 가상 요소 +
+   .phone-caption-zone)를 둬서, 아래쪽 빈 아이템(.phone-caption-zone)
+   안에서 캡션을 다시 한 번 가운데 정렬한다 — 그러면 캡션 중심이 정확히
+   "ring 바닥~화면 하단" 구간의 중점에 온다. .phone-screen이 .phone의
+   전체 높이(384px)를 채워야(height:100%) 이 계산이 성립한다.
+   처음엔 두 flex 아이템을 1:1로 둬 ring-stage가 화면 정중앙에 왔는데,
+   "블루 링/속도/마커를 더 위로 올려달라"는 재요청으로 1:2까지 올렸다가
+   "너무 올라갔다, 좀 내려달라"는 즉시 재조정으로 1:1.5(2:3)로 절충했다
+   — 위쪽 spacer(::before)보다 아래쪽(.phone-caption-zone)이 조금 더
+   커서 ring-stage가 정중앙보다는 약간 위, 처음 올렸던 위치보다는
+   아래에 온다. */
 .phone-screen {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 22px;
+  height: 100%;
 }
 
-/* 지금 재생 중인 데모 단계를 한 줄로 설명하는 캡션(2026-09-09 피드백) —
-   원래는 "실제 앱이 보여줄 문구"와 "단계 설명 라벨" 두 줄이었는데, 한 줄만
-   남겨 달라는 요청으로 이 라벨 문구 하나로 합쳤다(단계별 문구는 script.js
-   의 PHASE_LABELS). */
+.phone-screen::before {
+  content: "";
+  flex: 1 1 0%;
+}
+
+.phone-caption-zone {
+  flex: 1.5 1 0%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 지금 재생 중인 데모 단계를 설명하는 캡션(2026-09-09 피드백으로 한 줄
+   라벨 하나로 합침, 단계별 문구는 script.js의 PHASE_LABELS) —
+   2026-09-15 재요청: "시간 기반 과속 예상 알림" 단계 문구가 두 줄
+   (문장 + 남은 시간 안내)로 늘어나며 모바일 폭(폰 목업 내부 238px)을
+   넘어서게 됐다. 한 줄+말줄임 방식을 버리고 "최대 N줄"을 기본 레이아웃
+   으로 삼는다 — 높이를 고정해(1줄짜리 문구도 이 높이 안에서 상하 중앙
+   정렬) 문구가 몇 줄이든 블루 링 위치가 흔들리지 않게 하고, 긴 문구는
+   자연스럽게 줄바꿈되게 한다.
+   2026-09-16 재요청으로 warning 단계가 "설명 한 줄 + 따옴표 문장"
+   구조가 됐는데, 그 따옴표 문장 자체가 216px 폭에서 이미 2줄이라(실측
+   약 319px, 폰 목업 폭으로는 줄일 수 없는 길이) 합쳐서 3줄이 필요해져
+   높이를 2줄→3줄 기준으로 다시 늘렸다. */
 .phone-caption {
   margin: 0;
   /* 항상 최상위 레이어에 그려야 한다는 요청 — position 없이는 z-index가
@@ -312,15 +346,30 @@ a { color: inherit; }
      기대지 않고 명시적으로 고정한다. */
   position: relative;
   z-index: 10;
-  /* 라운드 박스 크기는 단계마다 바뀌면 안 된다는 요청 — 가장 긴 문구
-     ("시간 기반 전방 과속 카메라 알림", 실측 약 175px)를 기준으로 폭을
-     고정하고, 짧은 문구는 그 안에서 가운데 정렬한다. */
-  width: 184px;
+  /* 폭은 고정하지 않고 max-width로 상한만 둔다(짧은 문구는 그 안에서
+     좁게, 긴 문구는 이 폭에서 줄바꿈) — 높이만 고정이면 세로 위치는
+     이미 안정적이라, 폭까지 고정할 필요가 없어졌다. 216px은 "시간 기반
+     과속 예상 알림"/"15초 뒤 전방에 100km 카메라.." 두 줄 각각이(실측
+     약 178px) 그 폭 안에서 한 줄로 그대로 유지되면서도, 폰 목업 내부
+     폭(238px)에 여유(약 11px씩)를 남기는 값이다. */
+  max-width: 216px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  white-space: nowrap;
+  /* 줄바꿈을 허용하되(auto-wrap), PHASE_LABELS에 명시적으로 넣은 "\n"
+     (예: 과속 예상 알림 문구의 문장/남은시간 두 줄 구분)도 그대로
+     지켜야 해서 nowrap 대신 pre-line을 쓴다. */
+  white-space: pre-line;
+  /* 기본값(word-break:normal)은 한글을 음절 단위 아무 데서나 끊어서,
+     예를 들어 "있습니다"가 "있습"/"니다"로 단어 중간에 갈라지는 경우가
+     생겼다(warning 단계 캡션에서 발견) — keep-all로 띄어쓰기 경계에서만
+     줄바꿈되게 한다. */
+  word-break: keep-all;
   overflow: hidden;
-  text-overflow: ellipsis;
   font-size: 12px;
+  line-height: 1.3;
   font-weight: 700;
   letter-spacing: 0.02em;
   /* 카메라 경고/과속 결과 단계에서 배경 전체가 흰/빨강으로 점멸하는 동안에도
@@ -329,8 +378,15 @@ a { color: inherit; }
      사용자가 더 단순한 이 방식을 선택). */
   color: var(--text);
   background: rgba(0, 0, 0, 0.82);
-  padding: 4px 10px;
+  padding: 4px 14px;
   border-radius: 999px;
+}
+
+/* approach 단계 캡션의 둘째 줄("카메라가 실제로 말해줄 문구")을 첫째 줄
+   (단계 설명)과 구분하려고 따옴표로 감싸고 이탤릭체를 준다(2026-09-15
+   재요청). 마크업은 script.js의 PHASE_LABELS.approach 참고. */
+.phone-caption-quote {
+  font-style: italic;
 }
 
 /* 감속 단계는 캡션이 없다(요청 사양) — 하지만 textContent를 진짜 빈
@@ -438,6 +494,33 @@ a { color: inherit; }
   background: #e8383f;
   border-color: #f7f9fc;
   color: #17181b;
+}
+
+/* "다수 카메라 중 대상 선별" 단계(select, 2026-09-15 피드백)의 후보
+   마커 — 실제 앱(radar_markers_layer.dart)에서 최우선으로 뽑히지 않은
+   카메라가 화면 가장자리 쪽에 작고 옅게 표시되다가, 대상이 아니면
+   사라지는 것을 옮겼다. 대상으로 뽑히는 마커는 새 요소 없이 기존
+   .camera-sign을 그대로 재사용(북쪽=12시에서 자라나 approach 단계로
+   이어짐, script.js 참고) — 이 두 후보는 화면 중앙까지 오지 못하고
+   11시/2시 방향에 머물다 사라지는 쪽만 표현한다. 위치(translate)·
+   불투명도·크기는 script.js가 매 프레임 계산해 인라인 스타일로 준다.
+   기본 크기(width/height/border)는 2026-09-16 재요청("너무 작다")으로
+   26px→40px, 테두리 5px→7px로 키웠다 — script.js의 scale 상한도 함께
+   0.55/0.5→0.85/0.75로 올려, 두 값이 곱해진 실제 표시 크기가 눈에 띄게
+   커지도록 했다. */
+.candidate-marker {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  z-index: 3;
+  border-radius: 50%;
+  background: #f7f9fc;
+  border: 7px solid #e8383f;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* .ring-core는 삭제했다 — 안쪽 원이 무슨 색이든("링보다 옅은 파란색") 결국
@@ -733,6 +816,79 @@ main section {
   }
 }
 
+/* "과속 경고" 단계(2026-09-16 재요청)의 오른쪽 삽화 — 히어로 애니메이션의
+   "전방 다수 카메라 중 대상 선별" 장면(select 단계, hero의 11시/2시 후보
+   마커)을 축약해 옮겼다. .mini-sign(대상 카메라, 계속 점멸)은 그대로 두고,
+   그 둘레에 작은 후보 마커 2개가 서로 다른 타이밍으로 나타났다 사라지길
+   반복한다 — 실제 12초 넘게 걸리는 히어로 시퀀스와 달리, 여긴 짧은 무한
+   반복 삽화라 두 마커 모두 하나의 루프 안에서 등장/소멸시킨다. */
+.mini-radar {
+  position: relative;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 2026-09-17 피드백으로 두 차례 재조정 — "가운데 마커가 최상위, 그 크기는
+   줄이고 후보 마커는 키워달라"(1차: 72→58 / 16→20)에 이어 "더 줄이고
+   더 키워달라"(2차: 58→50 / 20→24)는 재요청이 왔다. 이 삽화에서만
+   .mini-sign을 줄인다(다른 단계의 .mini-sign은 그대로). .mini-radar가
+   72px 박스를 유지하며 flex로 가운데 정렬해, 후보 마커의 절대 위치
+   (아래 top/left)는 그대로 쓸 수 있다. z-index로 가운데 마커가 항상
+   후보보다 위에 오도록 명시했다(원래도 DOM 순서상 위였지만, 이후
+   마크업이 바뀌어도 깨지지 않도록). */
+.mini-radar .mini-sign {
+  width: 50px;
+  height: 50px;
+  border-width: 5.8px;
+  font-size: 15px;
+  z-index: 2;
+}
+
+.mini-candidate {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #f7f9fc;
+  border: 5px solid var(--accent-red);
+  opacity: 0;
+  z-index: 1;
+}
+
+.mini-candidate--a {
+  top: -12px;
+  left: -14px;
+  animation: mini-candidate-a 4.2s ease-in-out infinite;
+}
+
+.mini-candidate--b {
+  top: -2px;
+  right: -18px;
+  animation: mini-candidate-b 4.2s ease-in-out infinite;
+  animation-delay: 1.6s;
+}
+
+/* 2026-09-17 재요청("사라지는 속도를 줄여줘, 지금은 너무 빠르다") —
+   전체 주기를 2.8s→4.2s로 늘리고, 정점(peak) 구간을 잠깐 유지한 뒤
+   페이드아웃 구간 자체도 27%(756ms)에서 40%(1.68s)로 넓혀 천천히
+   사라지게 했다. */
+@keyframes mini-candidate-a {
+  0%, 8%, 100% { opacity: 0; transform: scale(0.5); }
+  28% { opacity: 0.85; transform: scale(1); }
+  45% { opacity: 0.85; transform: scale(1); }
+  85% { opacity: 0; transform: scale(0.6); }
+}
+
+@keyframes mini-candidate-b {
+  0%, 8%, 100% { opacity: 0; transform: scale(0.45); }
+  28% { opacity: 0.6; transform: scale(0.9); }
+  45% { opacity: 0.6; transform: scale(0.9); }
+  85% { opacity: 0; transform: scale(0.55); }
+}
+
 /* 3단계: 과속 통과 결과(OverspeedSign) — 색 반전(빨간 바탕·흰 테두리·
    검정 숫자)에 짙은 빨강 글로우가 천천히 오간다. */
 .mini-sign--overspeed {
@@ -839,7 +995,9 @@ main section {
   .mini-sign--approach::before,
   .mini-sign--flash,
   .mini-sign--overspeed,
-  .mini-map-ai-icon::before {
+  .mini-map-ai-icon::before,
+  .mini-candidate--a,
+  .mini-candidate--b {
     animation: none;
   }
 }
@@ -1238,15 +1396,19 @@ main section {
   .phone { transform: scale(var(--mobile-phone-scale)); }
 
   /* 하단 캡션은 위 .phone 확대(1.3배)를 그대로 따라가지만, "그것만으로는
-     아직 작다"는 재요청으로 캡션 자체의 선언 크기도 한 번 더 키운다
-     (font-size 12→15px, 패딩도 비례해서 키움). .phone의 로컬 좌표계는
-     여전히 원본 240px 폭이라(interior 238px, .phone의 1px 테두리 제외)
-     너무 크게 잡으면 알약이 화면 테두리에 거의 닿는다 — 가장 긴 문구
-     ("시간 기반 전방 과속 카메라 알림")가 이 폰트/패딩에서 실측 약
-     216px이라 220px로 고정해 여유(약 9px씩)를 남겼다. */
+     아직 작다"는 재요청으로 캡션 자체의 선언 크기도 한 번 더 키웠었다
+     (font-size 12→15px). 2026-09-15 재요청으로 캡션이 최대 2줄까지
+     늘어나면서, 늘어난 문구의 긴 줄("15초 뒤 전방에 100km 카메라..",
+     실측 약 191px)을 15px에서 그대로 쓰면 패딩을 더해 .phone의 로컬
+     238px 폭에 거의 닿아버린다(15px 기준 실측 약 217px). 대신 13px로
+     한 단계만 낮춰(데스크톱 12px보다는 여전히 크다) 그 문구가 실측 약
+     191px에 머물게 하고, 220px 상한에 여유(약 9px씩)를 남겼다.
+     2026-09-16 재요청으로 warning 단계가 3줄이 필요해져(위 데스크톱
+     규칙 주석 참고) 높이도 2줄→3줄 기준으로 늘렸다. */
   .phone-caption {
-    width: 220px;
-    font-size: 15px;
+    max-width: 220px;
+    height: 62px;
+    font-size: 13px;
     padding: 5px 12px;
   }
 }

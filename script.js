@@ -52,7 +52,7 @@
       "nav.privacy": "개인정보 처리방침",
       "nav.privacyHref": "privacy.html",
       "hero.eyebrow": "경로 설정 없음 · 개인정보 필요 없음 · 시간 기반 사전 알림 · 통신·배터리 사용 최소화 · 광고 없음",
-      "hero.h1": "깨끗하고 편리한<br class=\"br-mobile\" /> 과속 카메라 알림",
+      "hero.h1": "깨끗하고 편리한<br class=\"br-mobile\" /> 과속카메라 알림",
       "hero.lead": "BlueArgos는 불안하게 개인 정보나 차량 정보를 요구하지 않습니다. 경로 설정도 필요 없습니다. 설치 후 실행만 하면 됩니다. 실행 중 데이터를 전혀 사용하지 않고 최소한의 배터리로 동작합니다. 그러면서도 <strong>BlueArgos만의 특허 기술</strong>로 편리함을 제공합니다.",
       "hero.badge2": "테스터 모집 중",
       "promise.h2": "BlueArgos는 다릅니다.",
@@ -73,15 +73,15 @@
       "step1.h3": "AI 기반 카메라 DB 전처리",
       "step1.p": "공개된 카메라 DB에는 누락된 정보가 많습니다. BlueArgos는 서버에서 AI가 지도와 함께 분석해 누락된 정보를 찾아 추가합니다. (특허 출원 중)",
       "step1.newlyAdded": "신규 추가",
-      "step2.h3": "사전 경고",
-      "step2.p": "현재 속도를 기준으로 과속 카메라까지 남은 시간을 계산해서 사용자가 설정한 시간 전에 알려줍니다. 저속이든 고속이든 미리 알려주는 시간이 동일합니다.",
-      "step2.caption": "20초 뒤 60km 단속 카메라가 있습니다.",
-      "step3.h3": "과속 경고",
-      "step3.p": "BlueArgos만의 기술로 경로 입력 없이도 전방의 많은 카메라 중 어떤 카메라에 대해 경고해줄지를 실시간으로 판단합니다. (특허 출원 중)",
+      "step2.h3": "감속 필요 시, 시간 기반 사전 경고",
+      "step2.p": "정속 주행 시에는 불필요한 알림음이 없습니다. 전방에 카메라가 있고 과속하여 감속이 필요할 경우에만 화면과 음성으로 알려줍니다. 그리고 항상 동일하게 15초 전에 알려줍니다. (설정 변경 가능) 어떤 도로든 어떤 속도든 동일한 시간 전에 알려주기 때문에 편리합니다.",
+      "step2.caption": "15초 뒤 60km 단속 카메라가 있습니다.",
+      "step3.h3": "실시간 대상 카메라 선별",
+      "step3.p": "경로 설정 없이도 BlueArgos만의 특허 기술로 전방의 많은 카메라들 중 경고 대상 카메라를 실시간으로 판단합니다.",
       "step3.caption": "속도를 60km로 줄이세요",
       "step4.h3": "과속 통과 안내",
       "step4.p": "과속했는지 여부를 카메라 통과 후 알려주기 때문에 더 이상 불안해하지 않아도 됩니다.",
-      "step4.caption": "20km/h 과속 했습니다.",
+      "step4.caption": "20km/h 과속했습니다.",
       "step5.h3": "자동 보정 업데이트",
       "step5.p": "잘못됐거나 오래된 카메라 정보를 발견하면, 정기 갱신 주기(평균 2주, 최대 한 달) 안에 자동으로 바로잡혀 다음 업데이트에 반영됩니다. 사용자가 따로 신고하거나 손볼 일은 없습니다.",
       "step5.updated": "업데이트됨",
@@ -124,11 +124,11 @@
       "step1.h3": "AI-based camera DB preprocessing",
       "step1.p": "Public camera databases are often missing entries. BlueArgos's servers use AI to cross-analyze them against maps and add what's missing. (Patent pending)",
       "step1.newlyAdded": "Newly added",
-      "step2.h3": "Early warning",
-      "step2.p": "It calculates the remaining time to a speed camera based on your current speed, and alerts you before the time you've set. Whether you're going slow or fast, the lead time it gives you stays the same.",
-      "step2.caption": "Speed camera (60 km/h) ahead in 20 seconds.",
-      "step3.h3": "Speed warning",
-      "step3.p": "With BlueArgos's own technology, it judges in real time — without any route input — which of the many cameras ahead to warn you about. (Patent pending)",
+      "step2.h3": "Time-based early warning, only when you need to slow down",
+      "step2.p": "There's no unnecessary alert sound while you're driving at a steady speed. It only speaks up — with a screen alert and voice — when there's a camera ahead and you need to slow down, always exactly 15 seconds in advance (configurable). Because the lead time is the same on any road at any speed, it's easy to trust.",
+      "step2.caption": "Speed camera (60 km/h) ahead in 15 seconds.",
+      "step3.h3": "Real-time target camera selection",
+      "step3.p": "With no route setup needed, BlueArgos's own patented technology judges in real time which of the many cameras ahead is the one to warn you about.",
       "step3.caption": "Slow down to 60 km/h.",
       "step4.h3": "Overspeed pass notice",
       "step4.p": "It tells you whether you were speeding only after you've passed the camera, so you don't have to worry about it while driving.",
@@ -207,11 +207,15 @@
 //
 // 실제 앱의 블루 링 상태 머신(no-mad-max/lib/features/driving/view/
 // blue_ring_animation.dart)과 색상/문구(driving_visual_tuning.dart,
-// speed_sign.dart, warning_view.dart)를 참고해 6단계 루프로 재현한다.
-// 실제 타이밍(예: expandDuration 8000ms, awaken 2500ms 등)은 이 앱 화면
-// 전체가 아니라 짧은 홍보용 미리보기이므로 그대로 쓰지 않고, "가속할수록
-// 링이 더 빨리 퍼진다"·"전방 마커가 뜨면 블루 링이 꺼진다" 같은 동작의
-// 모양만 옮겨 디자인 피드백이 요청한 초 단위로 눌러 담았다.
+// speed_sign.dart, warning_view.dart)를 참고해 7단계 루프로 재현한다.
+// "select" 단계(다수 카메라 중 대상 선별)는 전방에 여러 카메라가 있을 때
+// 실제 앱이 하나만 화면 중앙까지 부르고 나머지는 후보로 두었다가 지우는
+// 것(radar_markers_layer.dart의 primaryMarkerId/withinCorridorWidth,
+// markerSecondaryGrowthCap·markerInnerRadiusFraction — UI_SPEC.md §2.2)을
+// 옮긴 것이다. 실제 타이밍(예: expandDuration 8000ms, awaken 2500ms 등)은
+// 이 앱 화면 전체가 아니라 짧은 홍보용 미리보기이므로 그대로 쓰지 않고,
+// "가속할수록 링이 더 빨리 퍼진다"·"전방 마커가 뜨면 블루 링이 꺼진다"
+// 같은 동작의 모양만 옮겨 디자인 피드백이 요청한 초 단위로 눌러 담았다.
 (function () {
   var stage = document.querySelector("[data-ring-stage]");
   if (!stage) return;
@@ -221,9 +225,14 @@
   var speedEl = stage.querySelector("[data-speed-value]");
   var signEl = stage.querySelector("[data-camera-sign]");
   var signTextEl = signEl && signEl.querySelector("[data-camera-sign-text]");
+  var candidate11El = stage.querySelector("[data-candidate-11]");
+  var candidate2El = stage.querySelector("[data-candidate-2]");
   var captionEl = document.querySelector("[data-phone-caption]");
   var flashEl = document.querySelector("[data-flash]");
-  if (!ring || !glow || !speedEl || !signEl || !signTextEl || !captionEl || !flashEl) {
+  if (
+    !ring || !glow || !speedEl || !signEl || !signTextEl ||
+    !candidate11El || !candidate2El || !captionEl || !flashEl
+  ) {
     return;
   }
 
@@ -246,20 +255,26 @@
     speedEl.textContent = "5";
     speedEl.style.color = SPEED_LOW;
     captionEl.textContent =
-      document.documentElement.lang === "en" ? "Low-speed driving" : "저속 주행";
+      document.documentElement.lang === "en" ? "Low-speed driving screen" : "저속 주행 시 화면";
     return;
   }
 
   // 단계별 지속시간(ms) — 원래 디자인 피드백이 지정한 값(1. 펄스 2회,
   // 2. 6초 가속, 3. 4초 카메라 접근, 4. 4초 경고 점멸, 5. 4초 과속 결과,
   // 6. 3초 감속)에서, 2번부터 마지막까지는 사용자 요청으로 각 +3초씩
-  // 늘렸다(1번 펄스는 그대로).
-  var ORDER = ["pulse", "accel", "approach", "warning", "overspeed", "decel"];
+  // 늘렸다(1번 펄스는 그대로). "select"는 2026-09-15 피드백으로 새로
+  // 추가된, 가속 직후·카메라 접근 직전 단계 — 처음엔 4초로 잡았는데
+  // "구간이 너무 짧다"는 재요청(2026-09-16)으로 다른 단계들과 같은 폭
+  // (+3초)만큼 늘렸다. warning은 "카메라가 실제로 말해줄 문구"(둘째 줄,
+  // 따옴표+이탤릭)를 다 읽을 시간이 필요해 2026-09-16 하루에만 두 번
+  // 재요청(각 +3초)이 들어와 총 +6초 늘렸다.
+  var ORDER = ["pulse", "accel", "select", "approach", "warning", "overspeed", "decel"];
   var DURATIONS = {
     pulse: 1600 * 2,
     accel: 6000 + 3000,
+    select: 4000 + 3000,
     approach: 4000 + 3000,
-    warning: 4000 + 3000,
+    warning: 4000 + 3000 + 3000 + 3000,
     overspeed: 4000 + 3000,
     decel: 3000 + 3000,
   };
@@ -443,6 +458,31 @@
     flashEl.style.opacity = opacity.toFixed(3);
   }
 
+  // "select" 단계의 탈락 후보 마커(11시/2시) 위치 — 실제 앱처럼 화면
+  // 시계 각도(12시=0°, 시계방향)로 배치한다(radar_markers_layer.dart의
+  // bearingRadFor와 같은 발상). 대상으로 뽑히는 마커(12시)는 새 요소 없이
+  // 기존 .camera-sign을 재사용하므로 여기엔 11시/2시만 있으면 된다.
+  var CANDIDATE_RADIUS = 85;
+  // 후보 마커가 성장하는 동안 아래로 흘러내리는 총 이동량(px, 2026-09-16
+  // 재요청 "아래로 내려오며 커지다가 사라지게") — tick()의 select 분기에서
+  // 진행률(0~1)을 곱해 매 프레임 dy에 더한다.
+  var DOWNWARD_DRIFT = 46;
+  function clockAngleRad(hour) {
+    return ((hour % 12) * 30 * Math.PI) / 180;
+  }
+  var ANGLE_11 = clockAngleRad(11);
+  var ANGLE_2 = clockAngleRad(2);
+  var OFFSET_11 = {
+    dx: CANDIDATE_RADIUS * Math.sin(ANGLE_11),
+    dy: -CANDIDATE_RADIUS * Math.cos(ANGLE_11),
+  };
+
+  function setCandidate(el, opacity, scale, dx, dy) {
+    el.style.opacity = opacity.toFixed(3);
+    el.style.transform =
+      "translate(" + dx.toFixed(1) + "px, " + dy.toFixed(1) + "px) scale(" + scale.toFixed(4) + ")";
+  }
+
   function setSpeed(kmh) {
     speedEl.textContent = String(Math.round(kmh));
     speedEl.style.color = speedColor(kmh);
@@ -484,21 +524,31 @@
   // 감속 단계는 빈 문자열로 둬 .is-blank로 시각적으로만 지운다(applyCaption
   // 참고). 언어는 위 i18n IIFE가 document.documentElement.lang에 반영해둔
   // 값을 그대로 읽는다 — 상태를 따로 들지 않는다.
+  //
+  // warning 단계는 첫째 줄(단계 설명)과 둘째 줄("카메라가 실제로 말해줄
+  // 문구")로 나뉘고, 둘째 줄만 따옴표로 감싸고 이탤릭체로 구분한다
+  // (2026-09-16 재요청 — 원래 approach 둘째 줄에 있던 형식을 여기로
+  // 옮겼다) — 그래서 이 값은 "\n" + <span class="phone-caption-quote">로
+  // 감싼 둘째 줄로 이뤄진 HTML 문자열이다. 전부 이 파일이 직접 쓴 정적
+  // 문구라 외부/사용자 입력이 섞일 일이 없어 innerHTML 대입도 안전하다
+  // (아래 applyCaption, 위쪽 i18n 사전과 같은 전제).
   var PHASE_LABELS = {
     ko: {
-      pulse: "저속 주행",
-      accel: "110km/h까지 가속",
-      approach: "시간 기반 전방 과속 카메라 알림",
-      warning: "과속 경고",
-      overspeed: "과속 통과 알림",
+      pulse: "저속 주행 시 화면",
+      accel: "110km/h까지 가속 시 화면",
+      select: "전방에 다수 카메라 출현 화면",
+      approach: "실시간 경고 대상 카메라 선별",
+      warning: '시간 기반 카메라 경고\n<span class="phone-caption-quote">"15초 뒤 시속 100km 카메라가 있습니다. 속도를 줄이세요."</span>',
+      overspeed: "과속 통과 시 초과 속도 표시",
       decel: "",
     },
     en: {
-      pulse: "Low-speed driving",
-      accel: "Accelerating to 110 km/h",
-      approach: "Time-based camera alert ahead",
-      warning: "Speed warning",
-      overspeed: "Overspeed pass notice",
+      pulse: "Low-speed driving screen",
+      accel: "Screen while accelerating to 110 km/h",
+      select: "Screen when multiple cameras appear ahead",
+      approach: "Selecting the target camera in real time",
+      warning: 'Time-based camera warning\n<span class="phone-caption-quote">"Camera (100 km/h) ahead in 15 seconds. Slow down."</span>',
+      overspeed: "Excess speed shown after passing",
       decel: "",
     },
   };
@@ -514,7 +564,14 @@
     // 위아래로 움찔거린다(감속 단계 진입/탈출 시 신고된 버그) — 항상
     // non-breaking space(U+00A0)로 줄 높이를 유지하고 .is-blank로만
     // 지운다.
-    captionEl.textContent = label === "" ? "\u00A0" : label;
+    // .phone-caption\uC740 display:flex\uB77C \uC790\uC2DD \uAC01\uAC01\uC774 \uBCC4\uAC1C\uC758 flex item\uC774 \uB41C\uB2E4
+    // (\uD14D\uC2A4\uD2B8 \uB178\uB4DC\uB3C4 \uC775\uBA85 flex item) \u2014 approach \uB2E8\uACC4\uCC98\uB7FC \uC77C\uBC18 \uD14D\uC2A4\uD2B8 \uB4A4\uC5D0
+    // <span>\uC774 \uC774\uC5B4\uC9C0\uBA74 \uB450 flex item\uC774 \uAC00\uB85C\uB85C \uB098\uB780\uD788 \uBC30\uCE58\uB3FC(\uAE30\uBCF8
+    // flex-wrap:nowrap) "\uB450 \uC904"\uC774 \uC544\uB2C8\uB77C "\uB450 \uCE78"\uC73C\uB85C \uAE68\uC9C4\uB2E4(\uBC1C\uACAC\uB41C \uBC84\uADF8,
+    // \uC218\uC815). \uD56D\uC0C1 \uD558\uB098\uC758 \uB798\uD37C <span> \uC548\uC5D0 \uC804\uCCB4 \uB77C\uBCA8\uC744 \uB123\uC5B4 flex item\uC744
+    // \uD558\uB098\uB85C \uACE0\uC815\uD558\uACE0, \uADF8 \uC548\uC5D0\uC11C \uC904\uBC14\uAFC8(white-space:pre-line \uC0C1\uC18D)\uACFC
+    // \uAC00\uC6B4\uB370 \uC815\uB82C(text-align \uC0C1\uC18D)\uC774 \uC774\uB904\uC9C0\uAC8C \uD55C\uB2E4.
+    captionEl.innerHTML = "<span>" + (label === "" ? "\u00A0" : label) + "</span>";
     captionEl.classList.toggle("is-blank", label === "");
   }
 
@@ -571,11 +628,73 @@
       );
       setSign(0, 0.2, -24, false);
       setSpeed(speed);
+    } else if (name === "select") {
+      // 새 단계(2026-09-15 피드백) — 전방에 다수 카메라가 있을 때 그중
+      // 하나(12시/북쪽)가 대상으로 선별되는 과정을 보여준다. 실제 앱의
+      // 선정 기준(가장 가까우면서 전방 회랑 안인 카메라 하나만 원점까지
+      // 다가오고, 나머지는 후보인 채로 가장자리에 머물다 사라짐 —
+      // radar_markers_layer.dart의 primaryMarkerId/withinCorridorWidth,
+      // markerSecondaryGrowthCap·markerInnerRadiusFraction, UI_SPEC.md
+      // §2.2)를 단순화해 옮겼다: 12시 마커(대상)는 다음 approach 단계로
+      // 그대로 이어지도록 조금씩만 자라나고, 11시/2시 마커(탈락 후보)는
+      // 각자 다른 타이밍에 나타났다 사라진다.
+      var speed = 110;
+      expandPhase = (expandPhase + dt / expandPeriodMsForSpeed(speed)) % 1;
+      var frame = expandWaveFrame(expandPhase);
+      setRing(
+        now, frame.scale, frame.opacity, ringColorRgbForSpeed(speed),
+        blueRingInnerHalfDeg(speed), blueRingOuterHalfDeg(speed)
+      );
+      setFlash(FLASH_DARK, 0);
+      setSpeed(speed);
+
+      // 12시(북쪽) 대상 마커 — approach 단계의 시작 상태(scale 0.25 /
+      // rise -26 / opacity 0.35)로 정확히 이어지도록 끝값을 맞춘다(아래
+      // approach 분기의 시작 opacity도 0.35부터 시작하도록 함께 고쳤다 —
+      // 안 그러면 단계 경계에서 마커가 순간적으로 커지거나 밝아져 보인다).
+      // 시작 rise를 -50→-72로 낮춰(총 이동량 46px) 11시/2시 후보와 같은
+      // DOWNWARD_DRIFT만큼 내려오게 했다 — "커지기만 하고 안 내려온다"는
+      // 재요청(2026-09-17). 끝값(-26)은 그대로라 approach로의 연결은
+      // 그대로 자연스럽다.
+      var targetGrow = easeOutCubic(t);
+      setSign(
+        lerp(0, 0.35, targetGrow), lerp(0.05, 0.25, targetGrow),
+        lerp(-26 - DOWNWARD_DRIFT, -26, targetGrow), false
+      );
+
+      // 11시 후보 — 작게 나타났다가, 대상이 자리 잡는 후반부에 사라진다.
+      // 처음엔 0.35→0.55로만 커졌는데 "너무 작다"는 재요청(2026-09-16)으로
+      // 0.85까지 눈에 띄게 커지도록 키웠다. 같은 재요청으로 커지는 동안
+      // 아래로 흘러내리다 사라지는 움직임(DOWNWARD_DRIFT)도 더했다 —
+      // 대상이 되지 못하고 화면 아래로 지나가 버리는 느낌.
+      var c11In = easeOutCubic(clamp01(t / 0.15));
+      var c11Out = easeInOut(clamp01((t - 0.55) / 0.3));
+      var c11Drift = clamp01(t / 0.85);
+      setCandidate(
+        candidate11El, 0.55 * c11In * (1 - c11Out), lerp(0.35, 0.85, c11In),
+        OFFSET_11.dx, OFFSET_11.dy + DOWNWARD_DRIFT * c11Drift
+      );
+
+      // 2시 후보 — 작고 반투명하게 나타나 살짝 다가오다(반경이 줄며 커짐)
+      // 사라진다. 마찬가지로 최대 크기를 0.5→0.75로 키우고 아래로 흘러
+      // 내리는 움직임을 더했다.
+      var c2In = easeOutCubic(clamp01(t / 0.15));
+      var c2Out = easeInOut(clamp01((t - 0.7) / 0.3));
+      var c2Approach = easeInOut(clamp01(t / 0.85));
+      var c2Radius = lerp(CANDIDATE_RADIUS, CANDIDATE_RADIUS * 0.78, c2Approach);
+      var c2Scale = lerp(0.32, 0.75, c2Approach);
+      setCandidate(
+        candidate2El, 0.4 * c2In * (1 - c2Out), c2Scale,
+        Math.sin(ANGLE_2) * c2Radius, -Math.cos(ANGLE_2) * c2Radius + DOWNWARD_DRIFT * c2Approach
+      );
     } else if (name === "approach") {
-      // 3. 전방 100km 카메라 접근 — 마커가 나타나면 블루 링은 꺼진다(원본
+      // 4. 전방 100km 카메라 접근 — 마커가 나타나면 블루 링은 꺼진다(원본
       // 주석: "전방 마커가 있으면 블루 링을 끔"). 표지가 전방(위)에서
       // 다가와 커지는 것처럼 작게+위로 치우친 채로 시작해 제자리·실물
-      // 크기로 자란다.
+      // 크기로 자란다. opacity는 0이 아니라 0.35에서 시작해 1로 자란다 —
+      // 직전 select 단계에서 12시 마커가 이미 opacity 0.35까지 자란
+      // 채로 끝나므로, 그 값을 그대로 이어받아야 단계 경계에서 마커가
+      // 순간적으로 밝아지는 티가 나지 않는다.
       var speed = lerp(110, 116, t);
       expandPhase = (expandPhase + dt / expandPeriodMsForSpeed(speed)) % 1;
       var frame = expandWaveFrame(expandPhase);
@@ -585,11 +704,11 @@
         blueRingInnerHalfDeg(speed), blueRingOuterHalfDeg(speed)
       );
       var grow = easeOutCubic(t);
-      setSign(easeOutCubic(clamp01(t / 0.35)), lerp(0.25, 1, grow), lerp(-26, 0, grow), false);
+      setSign(lerp(0.35, 1, easeOutCubic(clamp01(t / 0.35))), lerp(0.25, 1, grow), lerp(-26, 0, grow), false);
       setFlash(FLASH_DARK, 0);
       setSpeed(speed);
     } else if (name === "warning") {
-      // 4. 100km 카메라 경고 — 표지는 자리 잡고, 배경만 흰/검으로 점멸한다
+      // 5. 100km 카메라 경고 — 표지는 자리 잡고, 배경만 흰/검으로 점멸한다
       // (실제 flashPeriod 667ms = 1.5Hz 그대로). 캡션은 배경 점멸과 무관하게
       // 항상 고정된 검정 알약+흰 글자라(.phone-caption CSS) 여기선 손대지
       // 않는다.
@@ -598,7 +717,7 @@
       setFlash(isLight ? FLASH_LIGHT : FLASH_DARK, isLight ? 0.92 : 0.85);
       setSpeed(lerp(116, 120, t));
     } else if (name === "overspeed") {
-      // 5. 100km 제한 구간을 120km/h로 통과 — 20km/h 초과. 표지가
+      // 6. 100km 제한 구간을 120km/h로 통과 — 20km/h 초과. 표지가
       // OverspeedSign(빨간 바탕·흰 테두리·"+20")으로 반전되고, 배경은
       // 검정↔짙은 빨강으로 점멸한다.
       setSign(1, 1, 0, true);
@@ -606,7 +725,7 @@
       setFlash(isDark ? FLASH_DARK : VERDICT_BG, 0.9);
       setSpeed(120);
     } else if (name === "decel") {
-      // 6. 결과 화면이 사라지고 120 → 5km/h로 감속, 블루 링이 다시 켜진다.
+      // 7. 결과 화면이 사라지고 120 → 5km/h로 감속, 블루 링이 다시 켜진다.
       // 속도가 떨어질수록 회랑도 다시 넓어져(14°/30° → 70°/110°) 링이
       // 정지 상태의 원래 폭으로 돌아온다.
       var speed = lerp(120, 5, easeOutCubic(t));
