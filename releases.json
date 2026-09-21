@@ -1,6 +1,17 @@
 {
   "releases": [
     {
+      "tag": "nmm-build-1.0.0-110",
+      "version": "1.0.0+110",
+      "date": "2026-09-22",
+      "ko": [
+        "차량과 블루투스로 연결된 상태에서 경고 음성을 휴대폰 스피커로 들을 때(설정 > \"블루투스 연결 시에도 핸드폰으로 소리 출력\"), 휴대폰 미디어 볼륨이 낮으면 소리가 작게 들리던 문제를 고쳤습니다."
+      ],
+      "en": [
+        "Fixed alerts sounding too quiet on the phone speaker when connected to your car via Bluetooth (Settings > \"Play through phone speaker even when Bluetooth is connected\") and the phone's media volume was low."
+      ]
+    },
+    {
       "tag": "nmm-build-1.0.0-108",
       "version": "1.0.0+108",
       "date": "2026-09-20",
