@@ -1,6 +1,19 @@
 {
   "releases": [
     {
+      "tag": "nmm-build-1.0.0-108",
+      "version": "1.0.0+108",
+      "date": "2026-09-20",
+      "ko": [
+        "새 앱 아이콘으로 바뀌었습니다.",
+        "화면을 오래 켜둔 채 운행해도 기기 발열이 줄고, 화면 애니메이션이 더 부드럽게 동작하도록 개선했습니다."
+      ],
+      "en": [
+        "Updated the app icon design.",
+        "Reduced device heat and made on-screen animation smoother during long drives with the display kept on."
+      ]
+    },
+    {
       "tag": "nmm-build-1.0.0-103",
       "version": "1.0.0+103",
       "date": "2026-09-15",
