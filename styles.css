@@ -1327,6 +1327,119 @@ main section {
   margin: 36px 0 10px;
 }
 
+/* ---------- 설정 방법 안내 페이지(setup-guide.html) ---------- */
+
+/* 언어 전환(setup-guide.js)이 <html lang>을 바꾸면, 실제 앱에서 찍은
+   한/영 스크린샷 중 해당 언어 쪽만 보이게 한다 — 문구뿐 아니라 화면
+   캡처 자체도 언어별로 다르므로 이미지 자체를 통째로 바꿔 끼운다. */
+:lang(en) .ko-only { display: none; }
+:lang(ko) .en-only { display: none; }
+
+.setup-block {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 32px;
+  align-items: start;
+  margin-bottom: 64px;
+}
+
+.setup-media { display: flex; justify-content: center; }
+
+/* 실제 기기 스크린샷을 둘러싸는 단순한 폰 프레임 — 히어로의 `.phone`은
+   캔버스 애니메이션 전용 구조라 그대로 재사용하기 어려워 새로 만들었다. */
+.shot-frame {
+  position: relative;
+  width: 100%;
+  max-width: 220px;
+  border-radius: 26px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  box-shadow:
+    0 20px 50px -18px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+  background: #000;
+}
+
+.shot-frame img { width: 100%; display: block; }
+
+/* "여기를 터치하세요" 표시 — 블루 링과 같은 색으로, 화면 중앙에 겹쳐
+   그린다(실제 원점 탭 히트 영역과 같은 위치). */
+.tap-indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 72px;
+  height: 72px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.tap-indicator span {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid var(--ring);
+  animation: tap-pulse 1.8s ease-out infinite;
+}
+
+.tap-indicator span:nth-child(2) { animation-delay: 0.6s; }
+
+@keyframes tap-pulse {
+  0% { transform: scale(0.4); opacity: 0.9; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+
+.setup-text .guide-step-num { margin-bottom: 12px; }
+
+.setup-text h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.setup-text > p {
+  margin: 0 0 20px;
+  color: var(--text-dim);
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+
+.settings-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 18px;
+}
+
+.settings-item.is-sub {
+  margin-left: 20px;
+  padding-left: 16px;
+  border-left: 2px solid var(--panel-border);
+}
+
+.settings-item-label {
+  font-weight: 700;
+  font-size: 14.5px;
+  margin-bottom: 4px;
+}
+
+.settings-item-desc {
+  color: var(--text-dim);
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+
+/* 메뉴 4항목(설정/소개 및 사용법/앱 정보/종료) — settings-item과 같은
+   라벨/설명 톤이지만 서브 들여쓰기가 없다. */
+.menu-list {
+  list-style: none;
+  margin: 0 0 20px;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 860px) {
@@ -1336,6 +1449,8 @@ main section {
   .cards { grid-template-columns: repeat(2, 1fr); }
   .ring-section { grid-template-columns: 1fr; text-align: left; }
   main section { padding: 64px 20px; }
+  .setup-block { grid-template-columns: 1fr; }
+  .shot-frame { max-width: 260px; margin: 0 auto; }
 }
 
 @media (max-width: 520px) {
