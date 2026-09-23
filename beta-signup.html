@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-2LQ680VZ1V"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-2LQ680VZ1V');
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>사전체험단 모집 — BlueArgos</title>
+<meta name="description" content="BlueArgos 정식 출시 전 iOS·Android 사전체험단을 모집합니다. 이메일과 스마트폰 기종을 남겨 주시면 테스트 참여 링크를 보내드립니다." />
+<meta name="theme-color" content="#000000" />
+<link rel="icon" href="assets/app_icon.png?v=2" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://blueargos.github.io/beta-signup.html" />
+<meta property="og:title" content="사전체험단 모집 — BlueArgos" />
+<meta property="og:description" content="BlueArgos 정식 출시 전 iOS·Android 사전체험단을 모집합니다. 이메일과 스마트폰 기종을 남겨 주시면 테스트 참여 링크를 보내드립니다." />
+<meta property="og:image" content="https://blueargos.github.io/assets/og_image.png" />
+<meta property="og:image:width" content="2400" />
+<meta property="og:image:height" content="1260" />
+<meta property="og:image:type" content="image/png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="사전체험단 모집 — BlueArgos" />
+<meta name="twitter:description" content="BlueArgos 정식 출시 전 iOS·Android 사전체험단을 모집합니다. 이메일과 스마트폰 기종을 남겨 주시면 테스트 참여 링크를 보내드립니다." />
+<meta name="twitter:image" content="https://blueargos.github.io/assets/og_image.png" />
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* 사전체험단 신청 페이지 전용 — privacy.html의 .legal 문서형 레이아웃을
+     그대로 빌려 쓰되(읽기 폭 760px, 표 스타일), 동의문 박스와 폼 삽입
+     영역만 이 페이지에 새로 추가한다. */
+  .legal { max-width: 760px; margin: 0 auto; padding: 40px 24px 64px; }
+  .legal-head { margin-bottom: 20px; }
+  .legal-head h1 {
+    font-size: clamp(28px, 5vw, 38px);
+    line-height: 1.2;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  .legal-head p {
+    color: var(--text-dim);
+    font-size: 15.5px;
+    margin: 0;
+    max-width: 62ch;
+  }
+
+  .signup-note {
+    margin: 28px 0;
+    padding: 16px 18px;
+    background: rgba(94, 168, 255, 0.08);
+    border: 1px solid rgba(94, 168, 255, 0.22);
+    border-radius: var(--radius-md);
+    color: var(--text-dim);
+    font-size: 13.5px;
+    line-height: 1.65;
+  }
+  .signup-note strong { color: var(--text); }
+
+  .legal h2 { font-size: 19px; margin: 0 0 12px; letter-spacing: -0.01em; }
+  .legal ol { color: var(--text-dim); padding-left: 22px; margin: 0 0 14px; }
+  .legal ol li { margin-bottom: 7px; }
+  .legal section { margin: 0 0 34px; }
+
+  .platform-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 640px) {
+    .platform-grid { grid-template-columns: 1fr; }
+  }
+  .platform-block {
+    padding: 18px 20px;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius-md);
+  }
+  .platform-block h3 {
+    font-size: 15px;
+    margin: 0 0 10px;
+    color: var(--ring);
+  }
+  .platform-block ol { margin: 0; }
+
+  .consent-box {
+    padding: 22px 24px;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius-md);
+  }
+  .legal-table-wrap { overflow-x: auto; margin: 0 0 14px; }
+  .legal table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 420px; }
+  .legal th, .legal td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--panel-border);
+    vertical-align: top;
+  }
+  .legal th {
+    width: 30%;
+    color: var(--text);
+    font-weight: 600;
+    font-size: 12.5px;
+    letter-spacing: 0.03em;
+  }
+  .legal td { color: var(--text-dim); }
+  .consent-box p:last-child { margin: 10px 0 0; color: var(--text-dim); font-size: 14px; }
+  .consent-box a { color: var(--ring); }
+
+  .signup-form-wrap { margin-top: 32px; }
+  .signup-form-slot {
+    min-height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--panel);
+    border: 1px solid var(--panel-border);
+    border-radius: var(--radius-md);
+    padding: 32px 24px;
+    text-align: center;
+  }
+  .signup-form-slot:has(iframe) { display: block; padding: 0; }
+  .signup-form-slot iframe { display: block; width: 100%; border: 0; border-radius: var(--radius-md); }
+  .signup-form-pending { color: var(--text-faint); font-size: 14px; margin: 0; }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="index.html#top">
+      <img class="brand-mark" src="assets/app_icon.png" alt="" aria-hidden="true" />
+      <span class="brand-name">BlueArgos</span>
+    </a>
+    <div class="nav-right">
+      <nav class="nav-links" id="nav-links" aria-label="주요 섹션">
+        <a href="index.html#promise">차별점</a>
+        <a href="index.html#how">동작 방식</a>
+        <a href="setup-guide.html">설정 방법</a>
+        <a href="auto-launch.html">자동 실행/종료 설정법</a>
+        <a href="releases.html">업데이트 내역</a>
+        <a href="beta-signup.html" aria-current="page">사전체험단</a>
+        <a href="privacy.html">개인정보 처리방침</a>
+      </nav>
+      <button type="button" class="nav-toggle" aria-label="메뉴 열기" aria-expanded="false" aria-controls="nav-links">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top" class="legal">
+
+  <div class="legal-head">
+    <h1>iOS · Android 사전체험단 모집</h1>
+    <p>
+      BlueArgos는 아직 스토어에 정식 출시되지 않았습니다. 정식 출시에 앞서 사전체험단을 모집합니다.
+      아래 양식에 이메일과 사용 중인 스마트폰 기종을 남겨 주시면, 테스트 참여 준비가 되는 대로
+      Google Play 비공개 테스트 또는 Apple TestFlight 초대 링크를 이메일로 보내드립니다.
+    </p>
+  </div>
+
+  <div class="signup-note">
+    <strong>이 페이지는 BlueArgos 앱 자체의 원칙과는 별개입니다.</strong>
+    앱은 여전히 계정도, 개인정보도 요구하지 않습니다. 이 신청서는 정식 출시 전 사전체험단에게
+    스토어 초대 링크를 보내드리기 위한 한시적인 절차이며, 아래 동의하에 최소한의 정보만 받습니다.
+  </div>
+
+  <section>
+    <h2>신청 방법</h2>
+    <ol>
+      <li>아래 양식에 이메일 주소와 사용 중인 스마트폰 기종(운영체제 포함)을 입력합니다.</li>
+      <li>개인정보 수집·이용에 동의합니다.</li>
+      <li>테스트 준비가 되면 입력하신 이메일로 Google Play 또는 Apple TestFlight 참여 링크를 보내드립니다.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>참여 절차</h2>
+    <div class="platform-grid">
+      <div class="platform-block">
+        <h3>Android · Google Play</h3>
+        <ol>
+          <li>입력하신 이메일로 테스트 참여 동의 URL을 보내드립니다.</li>
+          <li>동의 링크를 열면 Play 스토어로 이동합니다. 5,000원 결제 화면이 뜨지만, 테스터에게는 테스트용 카드가 지급되어 있어 결제를 눌러도 그 카드로 처리됩니다 — 실제로 비용이 청구되지 않습니다.</li>
+          <li>설치 후 바로 사용하시면 됩니다.</li>
+        </ol>
+      </div>
+      <div class="platform-block">
+        <h3>iOS · Apple App Store</h3>
+        <ol>
+          <li>입력하신 이메일로 Apple에서 TestFlight 참여 초대 메일이 발송됩니다.</li>
+          <li>TestFlight 앱을 설치한 뒤, TestFlight 안에서 BlueArgos를 설치해 사용하시면 됩니다.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>테스트 중 알아두실 점</h2>
+    <p>
+      출시 초기에는 이미 사라진 카메라를 알리거나, 옆 차로·다른 도로의 카메라를 잘못 알리는 경우가
+      있을 수 있습니다. 이런 오류는 사용자가 따로 신고하지 않아도, 정기 갱신 주기(빠르면 2주, 늦어도
+      한 달 이내)에 맞춰 자동으로 바로잡힙니다.
+    </p>
+  </section>
+
+  <section>
+    <h2>개인정보 수집·이용 안내</h2>
+    <div class="consent-box">
+      <div class="legal-table-wrap">
+        <table>
+          <tbody>
+            <tr><th>수집 항목</th><td>이메일 주소, 사용 중인 스마트폰 기종(운영체제 포함)</td></tr>
+            <tr><th>수집 목적</th><td>사전체험단(베타 테스트) 모집 및 참여 안내 — Google Play 비공개 테스트 / Apple TestFlight 초대 링크 발송, 테스트 관련 공지</td></tr>
+            <tr><th>보유·이용 기간</th><td>베타 테스트 종료 시 또는 동의를 철회하실 때까지 보유하며, 그 후 지체 없이 파기합니다.</td></tr>
+            <tr><th>처리 위탁</th><td>신청서 접수는 Google Forms(Google LLC)를 통해 이루어지며, 입력하신 정보는 Google의 인프라에 저장됩니다.</td></tr>
+            <tr><th>동의 거부 권리</th><td>동의하지 않으실 권리가 있습니다. 동의하지 않으실 경우 사전체험단 신청이 제한되며, 이는 앱 자체 이용과는 무관합니다.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>개인정보 처리에 관한 문의나 삭제 요청은 <a href="mailto:blueargos.contact@gmail.com">blueargos.contact@gmail.com</a>으로 보내 주세요.</p>
+    </div>
+  </section>
+
+  <section class="signup-form-wrap">
+    <h2>신청 양식</h2>
+    <div id="signup-form-slot" class="signup-form-slot">
+      <p class="signup-form-pending">신청 양식을 준비 중입니다. 곧 연결됩니다.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img class="brand-mark" src="assets/app_icon.png" alt="" aria-hidden="true" />
+      <span>BlueArgos</span>
+    </div>
+    <p class="footer-copy">© BlueArgos · <a href="privacy.html">개인정보 처리방침</a></p>
+  </div>
+</footer>
+
+<script src="nav-toggle.js"></script>
+<script src="beta-signup.js"></script>
+</body>
+</html>

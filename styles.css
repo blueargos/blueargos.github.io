@@ -224,6 +224,7 @@ a { color: inherit; }
   background: rgba(94, 168, 255, 0.12);
   color: var(--ring);
   border: 1px solid rgba(94, 168, 255, 0.28);
+  text-decoration: none;
 }
 
 .pill-muted {
