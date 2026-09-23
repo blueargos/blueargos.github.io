@@ -1,6 +1,17 @@
 {
   "releases": [
     {
+      "tag": "nmm-build-1.0.0-114",
+      "version": "1.0.0+114",
+      "date": "2026-09-23",
+      "ko": [
+        "설정 > \"블루투스 연결시에도 핸드폰으로 소리 출력\"을 켜둔 상태로 주행할 때, 실제로는 경고음이 휴대폰 스피커로 충분히 크게 나오고 있는데도 \"미디어 볼륨을 올려주세요\" 경고가 잘못 뜨던 문제를 고쳤습니다."
+      ],
+      "en": [
+        "Fixed a false \"raise your media volume\" warning that could appear while driving with Settings > \"Play through phone speaker even when Bluetooth is connected\" turned on, even though alerts were already playing loud enough through the phone speaker."
+      ]
+    },
+    {
       "tag": "nmm-build-1.0.0-111",
       "version": "1.0.0+111",
       "date": "2026-09-22",
