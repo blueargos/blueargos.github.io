@@ -1,6 +1,32 @@
 {
   "releases": [
     {
+      "tag": "nmm-build-1.0.0-116",
+      "version": "1.0.0+116",
+      "date": "2026-09-25",
+      "ko": [
+        "교차로 근처에서 실제로는 다른 도로에 있는 카메라의 제한속도가 잘못 표시돼, 정상 속도로 달렸는데도 과속으로 판정되던 문제를 고쳤습니다.",
+        "지금 가는 방향이 아니라 갈라지는 옆 도로 쪽 카메라 때문에 불필요한 경고가 뜨던 문제를 고쳤습니다."
+      ],
+      "en": [
+        "Fixed cases near intersections where the speed limit shown came from a camera on a different nearby road, which could trigger a false overspeed alert even at a legal speed.",
+        "Fixed unnecessary warnings for a camera on a side road that branches off, when you weren't actually heading that way."
+      ]
+    },
+    {
+      "tag": "nmm-build-1.0.0-115",
+      "version": "1.0.0+115",
+      "date": "2026-09-25",
+      "ko": [
+        "구간단속(평균속도 단속) 중 GPS 신호가 잠깐 끊겼다가 돌아왔을 때, 실제로는 구간을 벗어나지 않았는데도 단속이 조용히 취소되던 문제를 고쳤습니다.",
+        "구간단속 중 GPS 신호가 약해졌을 때 화면 하단에 안내 문구 여러 줄이 서로 겹쳐 보이던 문제를 고쳤습니다."
+      ],
+      "en": [
+        "Fixed section (average-speed) enforcement being silently cancelled after a brief GPS signal loss, even when you hadn't actually left the section.",
+        "Fixed multiple lines of text at the bottom of the screen overlapping each other when GPS signal was weak during section enforcement."
+      ]
+    },
+    {
       "tag": "nmm-build-1.0.0-114",
       "version": "1.0.0+114",
       "date": "2026-09-23",
