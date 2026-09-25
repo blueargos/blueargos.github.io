@@ -1,6 +1,17 @@
 {
   "releases": [
     {
+      "tag": "nmm-build-1.0.0-117",
+      "version": "1.0.0+117",
+      "date": "2026-09-25",
+      "ko": [
+        "일부 구간에서 반대 방향 카메라 데이터가 서로 뒤섞여, 실제로 있는 구간단속(평균속도단속) 구간이 인식되지 않던 문제를 고쳤습니다. 데이터 갱신으로 자동 반영됩니다."
+      ],
+      "en": [
+        "Fixed a data issue where records for cameras facing opposite directions at the same spot were mixed together, causing some real section (average-speed) enforcement zones to go undetected. This is applied automatically with the next data update."
+      ]
+    },
+    {
       "tag": "nmm-build-1.0.0-116",
       "version": "1.0.0+116",
       "date": "2026-09-25",
