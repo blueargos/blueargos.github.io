@@ -1127,6 +1127,15 @@ main section {
   color: var(--text-faint);
 }
 
+.release-platform-label {
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-faint);
+  margin: 14px 0 6px;
+}
+
 .release-text {
   margin: 0 0 6px;
   font-size: 14.5px;

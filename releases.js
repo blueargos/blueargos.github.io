@@ -12,6 +12,25 @@
     return node;
   }
 
+  // 플랫폼 공통 항목은 release.ko/release.en, Android 전용은 release.android
+  // .ko/.en, iOS 전용은 release.ios.ko/.en에 둔다(둘 다 없는 옛 항목과
+  // 완전히 호환 — label 없이 공통 항목만 그대로 렌더링된다). 라벨은 실제로
+  // 넣을 문구가 있을 때만(둘 중 하나라도 비어있지 않을 때만) 보여준다.
+  function appendGroup(container, label, ko, en) {
+    var hasKo = ko && ko.length;
+    var hasEn = en && en.length;
+    if (!hasKo && !hasEn) return;
+    if (label) {
+      container.appendChild(el("div", "release-platform-label", label));
+    }
+    (ko || []).forEach(function (line) {
+      container.appendChild(el("p", "release-text release-text-ko", line));
+    });
+    (en || []).forEach(function (line) {
+      container.appendChild(el("p", "release-text release-text-en", line));
+    });
+  }
+
   function renderRelease(release) {
     var item = el("li", "release-card");
 
@@ -20,12 +39,14 @@
     meta.appendChild(el("span", "release-date", release.date));
     item.appendChild(meta);
 
-    (release.ko || []).forEach(function (line) {
-      item.appendChild(el("p", "release-text release-text-ko", line));
-    });
-    (release.en || []).forEach(function (line) {
-      item.appendChild(el("p", "release-text release-text-en", line));
-    });
+    var isSplit = !!(release.android || release.ios);
+    appendGroup(item, isSplit ? "공통 / Common" : null, release.ko, release.en);
+    if (release.android) {
+      appendGroup(item, "Android", release.android.ko, release.android.en);
+    }
+    if (release.ios) {
+      appendGroup(item, "iOS", release.ios.ko, release.ios.en);
+    }
 
     return item;
   }
