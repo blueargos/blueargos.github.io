@@ -1,6 +1,30 @@
 {
   "releases": [
     {
+      "tag": "nmm-build-1.0.0-122",
+      "version": "1.0.0+122",
+      "date": "2026-09-28",
+      "ko": [
+        "핸드폰 루틴(예: 차량 블루투스 연결 시 자동 실행) 등으로 화면이 잠긴 채 앱이 시작될 때, 이제 \"카메라 알림을 위해 잠금 해제 필요합니다\"라고 명확히 안내합니다. (예전엔 실제로 화면을 보기도 전에 \"카메라 알림 중지\"라고 나와 혼란스러울 수 있었습니다.)",
+        "블루투스로 연결된 상태(차량 오디오, 무선 이어폰 등)에서 경고 음성 도입부가 뭉개지거나, 일부 상황에서 이어폰과 휴대폰 스피커로 소리가 동시에 나오던 문제를 고쳤습니다."
+      ],
+      "en": [
+        "If the app auto-launches while your phone is locked (e.g. via a routine that starts it when your car's Bluetooth connects), it now clearly announces \"Unlock your phone for camera alerts\" instead of the confusing \"Camera alerts paused\" that could play before you'd even seen the screen.",
+        "Fixed an audio issue over Bluetooth (car audio, wireless earbuds, etc.) where the start of a warning could sound garbled, or in some cases play through both the earbuds and the phone speaker at the same time."
+      ]
+    },
+    {
+      "tag": "nmm-build-1.0.0-118",
+      "version": "1.0.0+118",
+      "date": "2026-09-27",
+      "ko": [
+        "카메라 위치·방향 데이터의 정확도를 개선했습니다. 특히 고가·지하차도 주변이나 교차로 근처에서 카메라 알림이 더 정확해졌습니다. 데이터 갱신으로 자동 반영됩니다."
+      ],
+      "en": [
+        "Improved the accuracy of camera location/direction data, especially near elevated roads, underpasses, and intersections, making alerts more precise in those areas. This is applied automatically with the next data update."
+      ]
+    },
+    {
       "tag": "nmm-build-1.0.0-117",
       "version": "1.0.0+117",
       "date": "2026-09-25",
