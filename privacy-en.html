@@ -225,19 +225,19 @@
     </ul>
 
     <p>
-      The first time either condition is seen at a camera, that record is never sent. When the same thing
-      happens at that camera a second time, that single record is sent right away, and every later
-      occurrence is likewise sent individually as it happens. Records that cannot be sent for lack of a
-      connection are kept on the device and sent later (at the latest, shortly after the app is next
-      started). A camera may start counting from the beginning again once the camera database on your
-      device is replaced by a new version; restarting the app does not reset this.
+      Seeing this happen once at a camera does not, by itself, send anything. <strong>Only when the same
+      thing happens again and again at that camera</strong> is a record of that repeated behavior sent.
+      In other words, normal driving — or a single one-off slip — never sends anything to the server.
+      Records that cannot be sent for lack of a connection are kept on the device and sent later (at the
+      latest, shortly after the app is next started). A camera may start counting from the beginning
+      again once the camera database on your device is replaced by a new version; restarting the app
+      does not reset this.
     </p>
 
     <p>
-      The number of records selected for sending is <strong>capped</strong>: at most 10 per day and 400
-      per month, and at most 100 in total (at most 10 per camera) for each version of the camera database.
-      Records beyond these limits are discarded without being sent. Days and months follow Korea Standard
-      Time.
+      As a further safeguard against misuse, sending is also kept under a generous cap (per device, per
+      day and per month, and separately per camera-database version and per camera). Records beyond
+      these limits are discarded without being sent.
     </p>
 
     <h3>What the record contains</h3>
