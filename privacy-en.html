@@ -173,7 +173,7 @@
 
   <div class="legal-head">
     <h1>Privacy Policy</h1>
-    <p class="legal-meta">Effective 12 September 2026 · First version (revised 15 September 2026: updated the microphone permission entry to match actual behavior)</p>
+    <p class="legal-meta">Effective 12 September 2026 · First version (revised 15 September 2026: updated the microphone permission entry to match actual behavior · revised 5 October 2026: disclosed Google Analytics for Firebase in the app, sections 5 and 7)</p>
   </div>
 
   <div class="legal-summary">
@@ -183,7 +183,7 @@
       <li>The one exception: before launch, our <a href="beta-signup.html">beta tester sign-up</a> collects an email address and phone model, under separate consent (Korean-language page).</li>
       <li>Location is used <strong>entirely on your device</strong> to decide when to warn you. Your route is never sent anywhere.</li>
       <li>In limited cases — such as driving over the speed limit despite a warning — a diagnostic record of that spot is sent automatically. Section 2 spells this out.</li>
-      <li>No ads, no advertising identifiers, no tracking SDKs.</li>
+      <li>No ads and no advertising identifiers. The app includes Google Analytics for Firebase for usage statistics (section 7).</li>
     </ul>
   </div>
 
@@ -300,7 +300,7 @@
 
   <section>
     <h2>5. Processors</h2>
-    <p>Records described in section 2 are stored on infrastructure operated by:</p>
+    <p>Records described in section 2 and the usage statistics in section 7 are stored or processed on infrastructure operated by:</p>
     <div class="legal-table-wrap">
       <table>
         <thead>
@@ -308,6 +308,7 @@
         </thead>
         <tbody>
           <tr><td>Cloudflare, Inc.</td><td>Receiving and storing diagnostic records (Workers, D1)</td></tr>
+          <tr><td>Google LLC</td><td>Receiving app usage statistics (Google Analytics for Firebase, section 7)</td></tr>
           <tr><td>GitHub, Inc.</td><td>Distributing camera data; hosting this website</td></tr>
         </tbody>
       </table>
@@ -337,8 +338,15 @@
     <h2>7. Advertising and tracking</h2>
     <p>
       BlueArgos carries <strong>no advertising.</strong> It does not read advertising identifiers
-      (Android Advertising ID, iOS IDFA), and contains no analytics or tracking SDKs.
-      It does not collect usage behaviour.
+      (Android Advertising ID, iOS IDFA) and does no advertising-related tracking.
+    </p>
+    <p>
+      The app does include Google's <strong>Google Analytics for Firebase</strong>. Together with a random per-installation
+      identifier, basic usage statistics such as launch counts, app version, OS version, device model, language and
+      approximate country may be sent to Google. These statistics contain no location, driving route or voice, and are
+      not linked to a name or account. They are used only to improve the app and check its stability, never for advertising or
+      profiling. There is currently no in-app switch to turn this off; if you do not want it, block the app's network use
+      in your device settings as described in section 8.
     </p>
     <p>
       This website, however, uses Google Analytics to count visitors. That applies to the website only
