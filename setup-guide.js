@@ -75,6 +75,8 @@
       "item.autoSync.desc": "정차 중이거나 앱을 막 켰을 때만 자동으로 받습니다(약 3MB, 반기 갱신).",
       "item.autoStop.label": "알림 중지 후 자동 종료 시간",
       "item.autoStop.desc": "3~10분 사이로 조절합니다. 앱이 백그라운드로 전환된 뒤 이 시간이 지나면 모든 기능을 정지합니다. 음성 안내를 꺼둔 경우에도 이 항목은 그대로 적용됩니다.",
+      "hero.appStoreLabel": "App Store에서 다운로드",
+      "hero.playLabel": "Google Play에서 다운로드",
       "footer.copy": "© BlueArgos · 계정도, 광고도, 추적도 없습니다 · <a href=\"privacy.html\">개인정보 처리방침</a>"
     },
     en: {
@@ -143,6 +145,8 @@
       "item.autoSync.desc": "Downloads automatically only while stopped or right after launch (about 3MB, updated roughly twice a year).",
       "item.autoStop.label": "Auto-stop time after alerts idle",
       "item.autoStop.desc": "Adjustable from 3–10 minutes. After the app goes to the background, all functionality stops once this time has passed — this applies even when Voice guidance is off.",
+      "hero.appStoreLabel": "Download on the App Store",
+      "hero.playLabel": "Get it on Google Play",
       "footer.copy": "© BlueArgos · No account, no ads, no tracking · <a href=\"privacy-en.html\">Privacy Policy</a>"
     }
   };

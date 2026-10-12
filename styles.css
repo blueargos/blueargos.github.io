@@ -210,9 +210,17 @@ a { color: inherit; }
 
 .hero-badges {
   display: flex;
-  gap: 10px;
+  gap: 12px;
   flex-wrap: wrap;
+  align-items: center;
 }
+
+.store-badge { display: inline-flex; line-height: 0; }
+.store-badge img { height: 44px; width: auto; }
+.hero .store-badge img { height: 56px; }
+.store-badge .lang-en { display: none; }
+html[lang="en"] .store-badge .lang-ko { display: none; }
+html[lang="en"] .store-badge .lang-en { display: block; }
 
 .pill {
   display: inline-flex;
@@ -1053,6 +1061,8 @@ main section {
   margin-bottom: 14px;
 }
 
+.footer-badges { margin-bottom: 18px; }
+
 .footer-note, .footer-copy {
   color: var(--text-faint);
   font-size: 12.5px;
@@ -1465,6 +1475,11 @@ main section {
 
 @media (max-width: 520px) {
   .cards { grid-template-columns: 1fr; }
+
+  /* 히어로 배지 두 개(합계 폭 ≈ 높이×6.64 + gap 12px)가 한 줄에 들어가도록
+     화면 폭에 비례해 높이를 줄인다(좌우 padding 24px씩 제외, 여유 포함). */
+  .hero .hero-badges { flex-wrap: nowrap; }
+  .hero .store-badge img { height: min(56px, calc((100vw - 64px) / 6.7)); }
 
   /* nav-links는 헤더 아래로 접히는 드롭다운이 되고(.is-open일 때만 펼침),
      그걸 여닫는 햄버거 버튼이 대신 보인다. .nav(sticky)가 이 드롭다운의

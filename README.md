@@ -25,7 +25,7 @@ python3 -m http.server 8080
 
 ## 현재 상태
 
-앱이 아직 스토어에 정식 출시되지 않은 상태를 반영해 "현재 개발 중" 배지만 두고, 스토어 링크나 다운로드 버튼은 넣지 않았습니다. 출시 시점에 `index.html`의 `.hero-badges`와 `.footer-inner`에 실제 스토어 링크를 추가하면 됩니다.
+히어로 영역(`index.html`의 `.hero-badges`)에 App Store / Google Play 공식 배지 이미지(`assets/badges/`, 한국어·영어판)를 두고 각 스토어 페이지로 연결했습니다. 언어 토글에 따라 `html[lang]` 기준 CSS로 이미지가 전환되고, 링크 `aria-label`은 `script.js`의 i18n(`hero.appStoreLabel`/`hero.playLabel`)으로 번역됩니다. Google Play PNG는 원본의 투명 여백만 잘라냈습니다. 푸터(`.footer-inner`)에도 같은 배지를 두었고(`.footer-badges`), 서브 페이지 6개의 푸터에도 복사해 두었습니다. 공통 include가 없어서 배지(링크·이미지)를 바꿀 때는 `index.html`과 서브 페이지 6개를 함께 고쳐야 합니다. `setup-guide.html`은 자체 i18n(`setup-guide.js`)을 쓰므로 `aria-label` 키도 그쪽에 있습니다.
 
 ## 릴리즈 노트 페이지(`releases.html`)
 
