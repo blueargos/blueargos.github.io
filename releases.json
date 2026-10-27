@@ -1,6 +1,29 @@
 {
   "releases": [
     {
+      "tag": "nmm-build-1.0.1-159",
+      "version": "1.0.1+159",
+      "date": "2026-10-27",
+      "ko": [
+        "가로 모드를 지원합니다. 휴대폰을 가로로 돌리면 블루 링과 안내 문구가 화면에 맞게 배치됩니다.",
+        "설정에서 화면 자동 회전을 켜고 끌 수 있습니다. 끄면 세로 화면으로 고정됩니다."
+      ],
+      "en": [
+        "Added landscape mode. When you rotate your phone, the Blue Ring and guidance text are laid out to fit the screen.",
+        "Added a setting to turn screen auto-rotation on or off. When off, the screen stays in portrait."
+      ],
+      "android": {
+        "ko": [
+          "안내 음성 볼륨을 \"직접 설정\"으로 두면 기기의 미디어 볼륨에 반영되도록 개선했고, 직접 설정의 기본 볼륨은 70%입니다.",
+          "앱을 켰을 때 시작 안내 음성이 간혹 나오지 않던 문제를 고쳤습니다."
+        ],
+        "en": [
+          "When the volume mode is set to \"Custom\", the guidance voice volume is now applied to the device's media volume. The default custom volume is 70%.",
+          "Fixed an issue where the startup announcement was occasionally not played when the app launched."
+        ]
+      }
+    },
+    {
       "tag": "nmm-build-1.0.0-122",
       "version": "1.0.0+122",
       "date": "2026-09-28",
